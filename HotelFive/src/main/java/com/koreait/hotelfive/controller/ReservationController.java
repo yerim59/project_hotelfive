@@ -13,6 +13,7 @@ import com.koreait.hotelfive.command.Command;
 import com.koreait.hotelfive.command.reservation.BookableListCommand;
 import com.koreait.hotelfive.command.reservation.MyReservationCommand;
 import com.koreait.hotelfive.command.reservation.NonMemberInsertCommand;
+import com.koreait.hotelfive.command.reservation.NonMemberReservationCancleCommand;
 import com.koreait.hotelfive.command.reservation.NonMemberReservationCommand;
 import com.koreait.hotelfive.command.reservation.PayCommand;
 import com.koreait.hotelfive.command.reservation.ReservationCancleCommand;
@@ -35,6 +36,13 @@ public class ReservationController {
 		return "reservation/bookableList";
 	}
 	
+	@RequestMapping("nonMemberReservationCancle")
+	   public String nonMemberReservationCancle(HttpServletRequest request, Model model) {
+	      model.addAttribute("request", request);
+	      command = new NonMemberReservationCancleCommand();
+	      command.execute(sqlSession, model);
+	      return "index";
+	   }
 
 	@RequestMapping("reservationPage")
 	public String reservationPage(HttpServletRequest request, Model model) {

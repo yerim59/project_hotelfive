@@ -5,19 +5,11 @@
 
 
 <!-- 동적인 페이지 포함 -->
-<jsp:include page="/WEB-INF/views/template/header.jsp" />
+<jsp:include page="/WEB-INF/views/template/header.jsp">
+	<jsp:param value="공지사항" name="title"/>
+</jsp:include>
 
 <style type="text/css">
-	.noticeViewBox {width: 1100px; margin-bottom: 50px; margin: 50px auto; text-align: center;}
-	.noticeViewBox .headerTable, .contentTable {width:1000px; border: 2px solid lightgray; border-collapse: collapse; margin: 20px auto;}
-	.noticeViewBox .headerTable td {border: 1px solid lightgray; padding: 10px 20px;}
-	.noticeViewBox .headerTable tr td:nth-of-type(1) {width: 200px; font-weight: bold; background-color: #EAF2FF}
-	.noticeViewBox .headerTable tr td:nth-of-type(3) {width: 200px; font-weight: bold; background-color: #EAF2FF}
-	.noticeViewBox .headerTable tr td:nth-of-type(2) {text-align: left;}
-	.noticeViewBox .headerTable tr td:nth-of-type(4) {width: 200px;}
-	.noticeViewBox .contentTable td {padding: 30px 30px 10px 30px;}
-	.noticeViewBox .contentTable tr:nth-of-type(2) td {text-align: left;}
-	.noticeViewBox img {width: 100%}
 	.notice_backimg {
 		width: 100%; 
 		height: 750px; 
@@ -27,13 +19,7 @@
 		color: white; 
 		padding-top: 300px;
 	}
-	.noticeViewBox .noticeviewBtn {width: 190px; padding: 7px 10px; border: none; background-color: darkgray; color:white; margin-top: 30px;}
-	.noticeViewBox .noticeviewBtn:hover {outline: none; background-color: #353535;}
-	.noticeViewBox .noticeviewBtn:focus {outline: none;} 
-	.notice_backimg #pagetitle {font-size: 85px;}
-	.notice_backimg #hotelfive, #explain {font-weight: bold;}
-	.notice_backimg #explain {font-size: 15px;}
-	#notice_name {width: 200px;}
+
 </style>
 
 <script type="text/javascript">

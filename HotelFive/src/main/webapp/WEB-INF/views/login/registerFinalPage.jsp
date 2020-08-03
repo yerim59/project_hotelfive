@@ -4,13 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!-- 동적인 페이지 포함 -->
-<jsp:include page="/WEB-INF/views/template/header.jsp" />
-
-<style type="text/css">
-	.page-box-3 {margin: 30px auto;padding: 200px 0 30px 0;text-align: center;}
-	.page-box-3 input[type=button] {width: 190px; padding: 7px 10px; border: none; background-color: darkgray; color:white; margin-top: 30px;}
-	.page-box-3 input[type=button]:hover, .page-box-3 input[type=button]:focus {outline: none; background-color: #353535;}
-</style>
+<jsp:include page="/WEB-INF/views/template/header.jsp">
+	<jsp:param value="회원가입" name="title"/>
+</jsp:include>
 
 <div id="page-box-3" class="page-box-3">
 	<h3>MEMBERSHIP</h3>

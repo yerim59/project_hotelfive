@@ -66,27 +66,31 @@
 		var mPw = '${loginDTO.mPw}';
 		//비밀번호 입력유무 검사
 		  if( f.mPw.value == '' ){
-			swal("비밀번호를 입력하세요.","", 'error');
+			alert('비밀번호를 입력하세요');
+			// swal("비밀번호를 입력하세요.","", 'error');
 			f.mPw.focus();
 			return;
 		}
 		
 		if( mPw != f.mPw.value ){
-			swal("가입된 비밀번호와 일치하지 않습니다.","", 'error');
+			alert('가입된 비밀번호와 일치하지 않습니다');
+			// swal("가입된 비밀번호와 일치하지 않습니다.","", 'error');
 			f.mPw.focus();
 			return;
 		}
 		
 		// 비밀번호가 일치할 시 
 		if( mPw == f.mPw.value ){ 
-			
-			swal("인증완료", "개인정보를 수정할 수 있는 페이지로 이동합니다.", {
+			alert('인증완료 개인정보를 수정할 수 있는 페이지로 이동합니다');
+			f.action = 'myUpdatePage';
+			f.submit();
+			/* swal("인증완료", "개인정보를 수정할 수 있는 페이지로 이동합니다.", {
 			      icon: "success",
 			    });
 			    setTimeout(function(){
 			    	f.action = 'myUpdatePage';
 					f.submit();
-			    }, 1000);
+			    }, 1000); */
 		}
 		
 		 

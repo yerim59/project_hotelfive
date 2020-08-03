@@ -11,66 +11,9 @@
 	
 </script>
 
-<style>
-<!--
-	*{margin:0;padding:0;}
-    .roomViewBox ul,li{list-style:none;}
-    .roomViewBox li{text-align: center;}
-    .slide{width:100%; height:960px; overflow:hidden; position:relative;}
-    .slide li{position:absolute; left:0; right:0; top:0; bottom:0; opacity:0; transition:1s;}
-    .slide input{display:none;}
-    .slide .bullet{position:absolute; bottom:20px; left:0; right:0; text-align:center; z-index:2;}
-    .slide .bullet label{width:10px;height:10px;border-radius:10px;border:2px solid #666;display:inline-block;background:#fff;font-size:0;transition:0.5s;cursor:pointer;}
-
-    /* 슬라이드 조작 */
-    #pos1:checked ~ ul li:nth-child(1),
-    #pos2:checked ~ ul li:nth-child(2),
-    #pos3:checked ~ ul li:nth-child(3),
-    #pos4:checked ~ ul li:nth-child(4){opacity:1;}
-
-    /* bullet 조작 */ 
-    #pos1:checked ~ .bullet label:nth-child(1),
-    #pos2:checked ~ .bullet label:nth-child(2),
-    #pos3:checked ~ .bullet label:nth-child(3),
-    #pos4:checked ~ .bullet label:nth-child(4){background:#666;}
-    
-    .roomViewBox { text-align: center; margin-bottom: 60px;}
-    .roomSelectBox { margin-bottom:30px;}
-    
-    .roomInfoTable { margin: 10px auto; border-collapse: collapse; }
-    .refund-table {border-collapse: collapse;}
-    .refund-table tr td:nth-of-type(2) {color: red;}
-    
-    .roomViewBox table, td { border: 1px solid black; padding: 10px;}
-    .roomViewBox tr > td:nth-of-type(1) { text-align: center; font-weight: bold;}
-    .roomViewBox .roomSelectBox input[type=button] {
-    	width: 150px;
-    	padding: 10px 0;
-    	margin: 0;
-    	border: none;
-    	background: #E3EAF3;
-    }
-    .roomViewBox .roomSelectBox input[type=button]:hover { background: #A4CAED; }
-    .roomViewBox .roomSelectBox input[type=button]:focus { outline: none; }
-    .roomViewBox #explain {color: gray;}
-    .roomViewBox #a {font-weight: bold;}
-    .roomViewBox .icon {display: inline-block; margin-left: 30px;}
-    
-    .roomViewBox #reviewBtn {margin-top: 20px; padding: 10px; width: 300px; background-color: darkgray; color: white; font-weight: bold; border: none;}
-   	.roomViewBox #reviewBtn:hover {background-color: #353535; outline: none;} 
-    
-    #roomViewImg {width: 100%;}
-    #line { color: gray; 
-    	margin: auto;
-	    color: gray;
-	    width: 1400px;
-	    border : 1px solid silver}
-    
--->
-</style>
-
-<!-- 동적인 페이지 포함 -->
-<jsp:include page="/WEB-INF/views/template/header.jsp" />
+<jsp:include page="/WEB-INF/views/template/header.jsp">
+	<jsp:param value="객실소개" name="title"/>
+</jsp:include>
 	 
 	<!-- 객실 상세정보 페이지 -->
 	<div class="roomViewBox">

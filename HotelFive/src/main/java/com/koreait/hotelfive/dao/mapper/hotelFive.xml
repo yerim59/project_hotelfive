@@ -39,6 +39,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	VALUES (RESERVATION_SEQ.NEXTVAL, #{param1}, null, #{param2}, 0, #{param3}, #{param4}, #{param5}, #{param6})
 	</insert>
 	
+	<select id="confirmReservation" resultType="Integer">
+	SELECT RNO FROM RESERVATION WHERE GNO = #{param1} AND RCHECKIN = #{param2} AND RCHECKOUT = #{param3}
+	</select>
 	<!-- 비회원 예약 정보 가져오기 -->
 	<select id="selectNonmemberReservation" resultType="com.koreait.hotelfive.dto.ReservationDTO">
 	SELECT R.RNO, R.GNO, R.NMID, R.RAPPROVAL, RPEOPLE, RPRICE, RCHECKIN, RCHECKOUT, GNAME
@@ -60,6 +63,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO NONMEMBER (NMID, NMNAME, NMPHONE)
 		VALUES (NONMEMBER_SEQ.NEXTVAL, #{param1}, #{param2})
 	</insert>
+	
+	<!-- 비회원 예약 취소 -->
+   <delete id="deleteNonMemberReservationNumber" parameterType="int">
+      DELETE FROM RESERVATION
+      WHERE RNO = #{rNo}
+   </delete>
 	
 	<!-- 비회원 아이디 가져오기 -->
 	<select id="selectNmId" resultType="String">
@@ -436,29 +445,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM RESERVATION
 	</select>
 	
-	<!-- 전체 예약현황_리스트 -->
-	<select id="reservationList" parameterType="Map" resultType="com.koreait.hotelfive.dto.ReservationViewDTO">
-		SELECT * 
-		FROM (SELECT ROWNUM AS RN, A.* FROM (
-									(SELECT M.MID, R.RNO, M.MNAME, M.MPHONE, G.GNAME, R.RCHECKIN, R.RCHECKOUT, R.RPEOPLE, R.RAPPROVAL
-										FROM MEMBER M, GUESTROOM G, RESERVATION R
-										WHERE M.MNO = R.MNO 
-										AND R.GNO = G.GNO
-										ORDER BY R.RNO DESC) A)) 
-		WHERE RN BETWEEN #{beginRecord} AND #{endRecord}
-	</select>
-		
-	<select id="nonMemberReservationList" parameterType="Map" resultType="com.koreait.hotelfive.dto.ReservationViewDTO">
-		SELECT * 
-		FROM (SELECT ROWNUM AS RN, A.* FROM (
-									(SELECT N.NMID, R.RNO, N.NMNAME, N.NMPHONE, G.GNAME, R.RCHECKIN, R.RCHECKOUT, R.RPEOPLE, R.RAPPROVAL
-										FROM NONMEMBER N, GUESTROOM G, RESERVATION R 
-										WHERE N.NMID = R.NMID 
-										AND R.GNO = G.GNO
-										ORDER BY R.RNO DESC) A)) 
-		WHERE RN BETWEEN #{beginRecord} AND #{endRecord}
-	</select>	
-		
+<!-- 전체 예약현황_리스트 -->
+   <select id="reservationList" parameterType="Map" resultType="com.koreait.hotelfive.dto.ReservationViewDTO">
+      SELECT * 
+      FROM (SELECT ROWNUM AS RN, A.* FROM (
+                           (SELECT M.MID, R.RNO, M.MNAME, G.GNAME, R.RCHECKIN, R.RCHECKOUT, R.RPEOPLE, R.RAPPROVAL
+                            FROM MEMBER M, GUESTROOM G, RESERVATION R
+                            WHERE M.MNO = R.MNO
+                            AND R.GNO = G.GNO
+                            UNION ALL
+                            SELECT N.NMID, R.RNO, N.NMNAME, G.GNAME, R.RCHECKIN, R.RCHECKOUT, R.RPEOPLE, R.RAPPROVAL
+                            FROM NONMEMBER N, GUESTROOM G, RESERVATION R
+                            WHERE N.NMID = R.NMID
+                            AND R.GNO = G.GNO)
+                            ORDER BY RNO DESC) A)
+      WHERE RN BETWEEN #{beginRecord} AND #{endRecord}
+   </select>
+   
 		
 	<select id="getTotalReservationCount" resultType="int">
 		SELECT COUNT(*) FROM RESERVATION

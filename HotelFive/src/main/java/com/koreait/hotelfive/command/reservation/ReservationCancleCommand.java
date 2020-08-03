@@ -21,6 +21,7 @@ public class ReservationCancleCommand implements Command {
 		
 		HotelFiveDAO hDAO =sqlSession.getMapper(HotelFiveDAO.class);
 		hDAO.reservationCancle(rNo);
+	
 	}
 
 }

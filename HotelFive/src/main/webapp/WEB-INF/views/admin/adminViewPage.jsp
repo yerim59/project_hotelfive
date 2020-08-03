@@ -13,104 +13,33 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-<style type="text/css">
-
-	.admin-view-box {
-		width: 800px;
-		margin: auto;
-	}
-	.admin-view-box table {
-		border-collapse: collapse;
-		width: 600px;
-		margin: auto;
-	}
-	.admin-view-box table td {
-		border: 1px solid black;
-		padding: 5px;
-	}
-	.admin-view-box table tbody td:nth-of-type(1) { width: 300px; text-align: left;}
-	.admin-view-box table tbody td:nth-of-type(2) { width: 100px; }
-	.admin-view-box table tbody td:nth-of-type(3) { width: 100px; }
-	.admin-view-box table tbody td:nth-of-type(4) { width: 70px; }
-	.admin-view-box table tbody thead tr:nth-of-type(1) {
-		text-align: center;
-		font-weight: bold;
-		background-color: teal;
-	}
-	
-</style>
 <script>
 	function fn_memberLeave(f){
-		swal({
-			  title: "정말 탈퇴할까요?",
-			  text: "한번 탈퇴하면 다시 복구가 불가능 한 점 유의바랍니다",
-			  icon: "warning",
-			  buttons: true,
-			  dangerMode: true,
-			})
-			.then((willDelete) => {
-				  if (willDelete) {
-				    swal("회원이 탈퇴되었습니다", {
-				      icon: "success",
-				    });
-				    setTimeout(function(){
-				    	 f.action = 'adminLeave';
-						 f.submit();
-				    }, 1500);
-				     
-				  } else {
-				    swal("취소하였습니다");
-				  }
-		});
-		
+		if( confirm('정말 탈퇴할까요?') ){
+			alert('회원이 탈퇴되었습니다');
+			f.action = 'adminLeave';
+			f.submit();
+		}
 		
 	}
 	
 	// 관리자 권한 부여
 	function fn_adminMake(f){
-		swal({
-			  title: "관리자 권한을 부여하시겠습니까?",
-			  text: "",
-			  icon: "warning",
-			  buttons: true,
-			  dangerMode: true,
-			})
-			.then((willDelete) => {
-			  if (willDelete) {
-			    swal("HotelFive의 관리자가 되었습니다!", {
-			      icon: "success",
-			    });
-			    setTimeout(function(){
-			    	f.action = 'adminMaking';
-					f.submit();
-			    }, 1500);
-			  } else {
-			    swal("취소하였습니다");
-			  }
-		});
+		if( confirm('관리자 권한을 부여하시겠습니까?') ){
+			alert('HotelFive의 관리자가 되었습니다!');
+			f.action = 'adminMaking';
+			f.submit();
+		}
+		
 	}
 	
 	function fn_userMake(f){
-		swal({
-			  title: "일반회원으로 권한을 부여하시겠습니까?",
-			  text: "",
-			  icon: "warning",
-			  buttons: true,
-			  dangerMode: true,
-			})
-			.then((willDelete) => {
-			  if (willDelete) {
-			    swal("HotelFive의 일반회원으로 변경되었습니다.", {
-			      icon: "success",
-			    });
-			    setTimeout(function(){
-			    	f.action = 'userMaking';
-					f.submit();
-			    }, 1500);
-			  } else {
-			    swal("취소하였습니다");
-			  }
-		});
+		if( confirm('일반회원으로 권한을 부여하시겠습니까?') ){
+			alert('HotelFive의 일반회원으로 변경되었습니다.');
+			f.action = 'userMaking';
+			f.submit();
+		}
+		
 	}
 </script>
 

@@ -4,7 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!-- 동적인 페이지 포함 -->
-<jsp:include page="/WEB-INF/views/template/header.jsp" />
+<jsp:include page="/WEB-INF/views/template/header.jsp">
+	<jsp:param value="회원가입" name="title"/>
+</jsp:include>
 
 
 <script type="text/javascript">
@@ -305,37 +307,6 @@
 	
 </script>
 
-<style type="text/css">
-	.sign-up-box {
-      margin: 30px auto;
-      padding: 200px 0 30px 0;
-      text-align: center;
-   }
-   .page-box-2 {display: none; }
-   .page-box-1 #checktable {border: 1px solid lightgray; width: 1208px; margin: auto; text-align: left;border-collapse: collapse; margin-top: 40px;}
-   .page-box-1 #checktable tr td{font-size: 17px; padding: 15px 20px; font-weight: bold;} 
-   .page-box-1 #checktable tr:nth-of-type(1) td{border-bottom: 2px solid black; color: red;} 
-   .page-box-1 #agreeBtn {margin-top: 20px; padding: 10px; width: 300px; background-color: darkgray; color: white; font-weight: bold; border: none;}
-   .page-box-1 #agreeBtn:hover {background-color: #353535; outline: none;} 
-   .page-box-1 .termsOfUse {width: 1208px; margin: auto; margin-top: 50px;}
-   .page-box-1 .termsOfUse textarea {font-size: 12px; text-align: left; padding:0px; padding-top: 20px; margin-bottom: 30px; border: 1px solid lightgray; border-top-color: black; }
-   .page-box-1 #personalInfo {border-bottom: 1px solid lightgray; border-top: 1px solid black; width: 1208px; border-collapse: collapse; margin-bottom: 40px;}
-   .page-box-1 #personalInfo tr td, .page-box-1 #personalInfo tr th {border-bottom: 1px solid lightgray; padding: 20px 20px;}
-   .page-box-1 #personalInfo tr th, .page-box-1 #personalInfo tr td:nth-of-type(1) {background-color: #F2F2F2;}
-   .page-box-1 > p {font-size: 12px;}
-   
-   .page-box-2 .register-box #register-table {width: 800px; padding: 20px 10px;  margin: auto; text-align: center; border-collapse: collapse; background-color: #F2F2F2}
-   .page-box-2 .register-box #register-table input[type=text], .page-box-2 .register-box #register-table input[type=password] {width: 450px; padding: 7px 10px; border: 1px solid lightgray;  }
-   .page-box-2 .register-box #register-table input[type=text]:hover, .page-box-2 .register-box #register-table input[type=password]:hover,.page-box-2 .register-box #register-table input[type=text]:focus, .page-box-2 .register-box #register-table input[type=password]:focus {outline: none; border-color: #353535}
-   .page-box-2 .register-box #register-table td:nth-of-type(1) {font-weight: bold; width: 230px; font-size: 13px; color: #353535;}
-   .page-box-2 .register-box #register-table td {padding: 10px 20px 10px 70px;text-align: left;}
-   .page-box-2 .register-box #register-table input[type=button] {width: 190px; padding: 7px 10px; border: none; background-color: #353535; color: white;}
-   .page-box-2 .register-box #register-table input[type=button]:hover, .page-box-2 .register-box #register-table input[type=button]:focus {outline: none; }
-   .page-box-2 #signUpBtn, .page-box-2 #clearBtn {width: 190px; padding: 7px 10px; border: none; background-color: darkgray; color:white; margin-top: 30px;}
-   .page-box-2 #signUpBtn:hover, .page-box-2 #clearBtn:hover, .page-box-2 #signUpBtn:focus, .page-box-2 #clearBtn:focus {outline: none; background-color: #353535;}
-   
-   
-</style>
 
 <div class="sign-up-box">
 	

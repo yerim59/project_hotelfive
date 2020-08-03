@@ -1,123 +1,13 @@
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 동적인 페이지 포함 -->
-<jsp:include page="/WEB-INF/views/template/header.jsp" />
+<jsp:include page="/WEB-INF/views/template/header.jsp">
+	<jsp:param value="객실예약" name="title" />
+</jsp:include>
 
-<style type="text/css">
-	#selectedRoomContainer h3 {
-		border-bottom: 2px solid #e9e9e9;
-	}
-	#selectedRoomContainer table{
-		margin: auto;
-		border-collapse: collapse;
-		text-align: center;
-	}
-	#selectedRoomContainer{
-		width: 1200px;
-		margin: auto;
-		margin-bottom: 50px;
-	}
-	#step1{
-		display:flex;
-	}
-	#step2{
-		display:none;
-	}
-	#step_img{
-		width:1208px;height: 70px;margin-bottom: 20px;
-	}
-	.step1_left {
-		width : 600px;
-	}
-	.step1_right {
-		width : 600px;
-		margin-left: 8px;
-	}
-	.con_tit {
-    	position: relative;
-   	 	padding: 20px 20px;
-    	background: #e9e9e9;
-	}
-	.con_desc {
-	    padding: 15px 20px 30px;
-	    border : 1px solid #e9e9e9;
-	}
-	.step1_user_info {
-	 border: 1px solid #e9e9e9;
-    width: 100%;
-    padding: 20px 0;
-		}
-	#stepUpBtn {
-		border: none;
-	    /* margin: auto; */
-	    /* text-align: center; */
-	    width: 50%;
-	    height: 50px;
-	    margin-top: 50px;
-	    margin-left: 150px;
-	    font-weight: bold;
-	}
-	.step1_user_info input[type="text"]{
-		border : none;
-	}
-	.step1_user_info td:nth-of-type(1) {
-	width: 30%;
-	height: 50px;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-	.step1_user_info td:nth-of-type(2) {
-	width: 245px;
-	height: 50px;
-	margin-bottom: 10px;
-}
-	
-	#selected_room{
-		width:100%
-	}
-	#selected_room tr:nth-of-type(1) {
-	 border-bottom: 1px solid #e9e9e9;
-}
-	#selected_room tr:last-of-type {
-	 border-bottom: 1px solid #e9e9e9;
-}
-	#step2-bottom{
-		display : flex;
-		margin-top: 20px;
-		margin-bottom: 50px;
-		height: 300px;
-	}
-	#step2-bottom-left{
-		width: 600px; 
-		margin-right: 8px;
-		text-align: center;
-	}
-	#step2-bottom-right{
-		width: 600px;
-		text-align: center;
-	}
-	#bill-table{
-		width: 100%;
-		height : 100%;
-		margin-top: 10px;
-	}
-	#bill-table th{
-		width: 40%;
-		height : 40px;
-	}
-	#bill-table td:nth-of-type(1) {
-		width: 30%;
-		height : 40px;
-	}
-	#bill-table td:nth-of-type(2) {
-		width: 40%;
-		height : 40px;
-	}
-
-</style>
 <script type="text/javascript">
 
 	var basicPrice = 0;
@@ -295,23 +185,27 @@
 	
 	
 </script>
-<div id="selectedRoomContainer" style="margin-top:200px">
-	<form name="form" >
-		<img id="step_img" alt="step" src="resources/assets/reservation_img/R_STEP1.PNG" ><br/>
-	<div id="step1">
-				<div class="step1_left" >
-						<h3>약관동의</h3>
-						<div class="con_tit">
-							<input type="checkbox" id="all_agree" />
-							<label for="all_agree"><span>전체약관에 모두 동의합니다.</span></label>
-							
-							<span style="display: block; margin-top: 5px;">(이용시 유의사항, 성인 확인)</span>
-						</div ><br/><br/>
-						<div class="con_tit">
-							<input type="checkbox" id="ag_use" /><label for="ag_use">이용시 유의사항에 동의</label>
-						</div>
-						<div  class="con_desc">
-								<textarea cols="80" rows="10" readonly style="width: 560px; text-align: left;">
+<div id="selectedRoomContainer" style="margin-top: 200px">
+	<form name="form">
+		<img id="step_img" alt="step"
+			src="resources/assets/reservation_img/R_STEP1.PNG"><br />
+		<div id="step1">
+			<div class="step1_left">
+				<h3>약관동의</h3>
+				<div class="con_tit">
+					<input type="checkbox" id="all_agree" /> <label for="all_agree"><span>전체약관에
+							모두 동의합니다.</span></label> <span style="display: block; margin-top: 5px;">(이용시
+						유의사항, 성인 확인)</span>
+				</div>
+				<br />
+				<br />
+				<div class="con_tit">
+					<input type="checkbox" id="ag_use" /><label for="ag_use">이용시
+						유의사항에 동의</label>
+				</div>
+				<div class="con_desc">
+					<textarea cols="80" rows="10" readonly
+						style="width: 560px; text-align: left;">
 									1) 보호자를 동반하지 않은 미성년자는 어떠한 경우에도 입실하실 수 없습니다.
 									2) 체크아웃 준비 후 객실 점검을 위해 카운터에 말씀해 주시고 난 뒤 체크아웃 진행하도록 하겠습니다.
 									3) 퇴실 시간 초과 시 1시간당 20,000원 추가 금액 발생되는 점 양해 부탁드립니다.
@@ -330,188 +224,188 @@
 									16) 객실 내 안전사고에 유의하시고, 사용 미숙과 부주의로 발생한 사고에 대해 호텔파이브에서는 책임지지 않습니다.
 									17)객실 정리가 끝나시면 호텔 관리자에게 연락하시어 퇴실 점검을 받으시기 바랍니다.
 								</textarea>
-						</div >
-						<div class="con_tit">
-								<input type="checkbox" id="ag_adult" />
-								<label for="ag_adult">이용자가 미성년자가 아니며 성인임에 동의</label>
-						</div>
 				</div>
-				
-				<div class="step1_right">
-					
-						<h3>예약정보입력</h3>
-						<div class="step1_user_info">
-										<c:if test="${loginDTO eq null  }">
-													<table id="bill-table" >
-														<tr>
-															<td>예약자명</td>
-															<td><input id="nmName" type="text" name="nmName" /></td>
-														</tr>
-														<tr>
-															<td>	연락처</td>
-															<td>
-																<input id="nmPhone" type="text" name="nmPhone" placeholder="하이픈(-) 포함"/><br/>
-																<span id="phoneCheckResult"></span>
-															</td>
-														</tr>
-													</table>
-													
-										</c:if>
-										<c:if test="${loginDTO ne null }">
+				<div class="con_tit">
+					<input type="checkbox" id="ag_adult" /> <label for="ag_adult">이용자가
+						미성년자가 아니며 성인임에 동의</label>
+				</div>
+			</div>
+
+			<div class="step1_right">
+
+				<h3>예약정보입력</h3>
+				<div class="step1_user_info">
+					<c:if test="${loginDTO eq null  }">
+						<table id="bill-table">
+							<tr>
+								<td>예약자명</td>
+								<td><input id="nmName" type="text" name="nmName" /></td>
+							</tr>
+							<tr>
+								<td>연락처</td>
+								<td><input id="nmPhone" type="text" name="nmPhone"
+									placeholder="하이픈(-) 포함" /><br /> <span id="phoneCheckResult"></span>
+								</td>
+							</tr>
+						</table>
+
+					</c:if>
+					<c:if test="${loginDTO ne null }">
 														${loginDTO.mName }
 														${loginDTO.mPhone }
-										</c:if>	
-						</div>
-						<br/><br/>
-						<h3>동의 후 숙박정보 입력</h3>
-						<div>
-							<input type="button" id="stepUpBtn" value="동의하고 다음페이지로"> 
-						</div>
+										</c:if>
 				</div>
-	</div>
-	<div id="step2">
-	<h3>선택객실목록</h3>
-	<div id="step2-top">
-		<table id="selected_room">
-				<tr>
-					<th>객실명</th>
-					<th>이용일</th>
-					<th>인원선택</th>
-					<th>기본이용요금</th>
-				</tr>
-				<c:if test="${empty gDTO }">
-					<tr>
-						<td>선택된 객실이 없습니다.</td>
-					</tr>
-				</c:if>
-				<c:if test="${not empty gDTO }">
-					<tr>
-						<td>${gDTO.gName }</td>
-						<td>${rCheckIn } ~ ${rCheckOut }</td>
-						<td>
-							기준인원 ${gDTO.gMinPeople }명, 1명 추가될때마다 2만원이 가산됩니다.
-							<br/>최대 ${gDTO.gMaxPeople }명 선택 가능합니다.<br/>
-							<c:if test="${gDTO.gNo eq 1 }">
-								<select id="selectPeople${gDTO.gNo }" name="rPeople" onchange="fn_change()">
-									<option value="">::인원선택::</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-								</select>
-							</c:if>
-							<c:if test="${gDTO.gNo eq 2 }">
-								<select id="selectPeople${gDTO.gNo }" name="rPeople" onchange="fn_change()">
-									<option value="">::인원선택::</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-								</select>
-							</c:if>
-							<c:if test="${gDTO.gNo eq 3 }">
-								<select id="selectPeople${gDTO.gNo }" name="rPeople" onchange="fn_change()">
-									<option value="">::인원선택::</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-								</select>
-							</c:if>
-							<c:if test="${gDTO.gNo eq 4 }">
-								<select id="selectPeople${gDTO.gNo }" name="rPeople" onchange="fn_change()">
-									<option value="">::인원선택::</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-								</select>
-							</c:if>
-							<c:if test="${gDTO.gNo eq 5 }">
-								<select id="selectPeople${gDTO.gNo }" name="rPeople" onchange="fn_change()">
-									<option value="">::인원선택::</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-								</select>
-							</c:if>
-						</td>
-						<td>
-							${gDTO.gPrice }
-						</td>
-					</tr>
-				</c:if>
-		</table>
-		</div>
-		<div id="step2-bottom">	
-			<div id="step2-bottom-left">
-			<h3>결제 가격</h3>
-				<div id="bill">
-								  <table id="bill-table">
-								  	<tr>
-								  		<th>기본 이용 요금</th>
-								  		<td>${ gDTO.gPrice }</td>
-								  		<td></td>
-								  	</tr>
-								  	<tr>
-								  		<th>인원수에 따른 추가 요금</th>
-								  		<td><div id="firstPrice"></div></td>
-								  		<td><div id="addPrice"></div></td>
-								  	</tr>
-								  	<tr>
-								  		<th>이용기간</th>
-								  		<td><div id="secondPrice"></div></td>
-								  		<td><div id="nights"></div></td>
-								  	</tr>
-								  	<tr>
-								  		<th>총 합계 요금</th>
-								  		<td><div id="totalPrice"></div></td>
-								  		<td></td>
-								  	</tr>
-								 </table>
+				<br />
+				<br />
+				<h3>동의 후 숙박정보 입력</h3>
+				<div>
+					<input type="button" id="stepUpBtn" value="동의하고 다음페이지로">
 				</div>
 			</div>
-			<div id="step2-bottom-right">
-			<h3>예약하기</h3>
-							<input type="hidden" name="gNo" value="${gDTO.gNo }"/>
-							<input type="hidden" name="gName" value="${gDTO.gName }"/>
-							<input type="hidden" name="rPrice" id="rPrice" value=""/>
-							<input type="hidden" name="rCheckIn" value="${rCheckIn }"/>
-							<input type="hidden" name="rCheckOut" value="${rCheckOut }"/>
-							<c:if test="${loginDTO ne null }">
-								<input type="button" value="결제하기" onclick="fn_pay1(this.form)"/>
-							</c:if>				
-							<c:if test="${loginDTO eq null }" >
-								<input type="button" value="결제하기" onclick="fn_pay2(this.form)" />
-							</c:if>
-			</div>
 		</div>
+		<div id="step2">
+			<h3>선택객실목록</h3>
+			<div id="step2-top">
+				<table id="selected_room">
+					<tr>
+						<th>객실명</th>
+						<th>이용일</th>
+						<th>인원선택</th>
+						<th>기본이용요금</th>
+					</tr>
+					<c:if test="${empty gDTO }">
+						<tr>
+							<td>선택된 객실이 없습니다.</td>
+						</tr>
+					</c:if>
+					<c:if test="${not empty gDTO }">
+						<tr>
+							<td>${gDTO.gName }</td>
+							<td>${rCheckIn }~ ${rCheckOut }</td>
+							<td>기준인원 ${gDTO.gMinPeople }명, 1명 추가될때마다 2만원이 가산됩니다. <br />최대
+								${gDTO.gMaxPeople }명 선택 가능합니다.<br /> <c:if
+									test="${gDTO.gNo eq 1 }">
+									<select id="selectPeople${gDTO.gNo }" name="rPeople"
+										onchange="fn_change()">
+										<option value="">::인원선택::</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+									</select>
+								</c:if> <c:if test="${gDTO.gNo eq 2 }">
+									<select id="selectPeople${gDTO.gNo }" name="rPeople"
+										onchange="fn_change()">
+										<option value="">::인원선택::</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+									</select>
+								</c:if> <c:if test="${gDTO.gNo eq 3 }">
+									<select id="selectPeople${gDTO.gNo }" name="rPeople"
+										onchange="fn_change()">
+										<option value="">::인원선택::</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</c:if> <c:if test="${gDTO.gNo eq 4 }">
+									<select id="selectPeople${gDTO.gNo }" name="rPeople"
+										onchange="fn_change()">
+										<option value="">::인원선택::</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+									</select>
+								</c:if> <c:if test="${gDTO.gNo eq 5 }">
+									<select id="selectPeople${gDTO.gNo }" name="rPeople"
+										onchange="fn_change()">
+										<option value="">::인원선택::</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+								</c:if>
+							</td>
+							<td>${gDTO.gPrice }</td>
+						</tr>
+					</c:if>
+				</table>
+			</div>
+			<div id="step2-bottom">
+				<div id="step2-bottom-left">
+					<h3>결제 가격</h3>
+					<div id="bill">
+						<table id="bill-table">
+							<tr>
+								<th>기본 이용 요금</th>
+								<td>${ gDTO.gPrice }</td>
+								<td></td>
+							</tr>
+							<tr>
+								<th>인원수에 따른 추가 요금</th>
+								<td><div id="firstPrice"></div></td>
+								<td><div id="addPrice"></div></td>
+							</tr>
+							<tr>
+								<th>이용기간</th>
+								<td><div id="secondPrice"></div></td>
+								<td><div id="nights"></div></td>
+							</tr>
+							<tr>
+								<th>총 합계 요금</th>
+								<td><div id="totalPrice"></div></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="step2-bottom-right">
+					<h3>예약하기</h3>
+					<input type="hidden" name="gNo" value="${gDTO.gNo }" /> <input
+						type="hidden" name="gName" value="${gDTO.gName }" /> <input
+						type="hidden" name="rPrice" id="rPrice" value="" /> <input
+						type="hidden" name="rCheckIn" value="${rCheckIn }" /> <input
+						type="hidden" name="rCheckOut" value="${rCheckOut }" />
+					<c:if test="${loginDTO ne null }">
+						<input id="payBtn" type="button" value="결제하기"
+							onclick="fn_pay1(this.form)" />
+					</c:if>
+					<c:if test="${loginDTO eq null }">
+						<input id="payBtn" type="button" value="결제하기"
+							onclick="fn_pay2(this.form)" />
+					</c:if>
+				</div>
+			</div>
 		</div>
 	</form>
-			
+
 </div>
 
-<%@ include file="/WEB-INF/views/template/footer.jsp" %>
+<%@ include file="/WEB-INF/views/template/footer.jsp"%>

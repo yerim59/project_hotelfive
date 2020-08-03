@@ -17,6 +17,8 @@
 	  font-size: 13px;
 	  cursor: pointer;
 	}
+	
+	.container { margin-bottom: 200px;}
 	.confirmBtn:hover { background-color: #3e8e41; }
 	.cancelBtn:hover{ background-color: #3e8e41; }
 </style>
@@ -103,7 +105,7 @@
 				              	<td>
 									<input type="hidden" name="rNo" value="${rDTO.rNo }">
 									<input type="hidden" name="mNo" value="${rDTO.mNo }">
-									<input type="button" value="예약대기" disabled>
+									<input class="cancelBtn" type="button" value="예약대기" disabled>
 								</td>
 								<td>
 									<input class="cancelBtn" type="button" value="예약취소" onclick="fn_ReservationCancel(this.form)">
@@ -116,11 +118,9 @@
 				              	<td>${rDTO.rCheckIn }</td>
 				              	<td>${rDTO.rCheckOut }</td>
 				              	<td>${rDTO.gName }</td>
-				              	<td><input type="button" value="예약확정" disabled></td>
+				              	<td><input class="cancelBtn" type="button" value="예약확정" disabled></td>
 								<td>
-									<input type="hidden" name="rNo" value="${rDTO.rNo }">
-									<input type="hidden" name="mNo" value="${rDTO.mNo }">
-									<input class="cancelBtn" type="button" value="예약취소" onclick="fn_ReservationCancel(this.form)">
+									
 								</td>
 							</c:if>
 			            </tr>

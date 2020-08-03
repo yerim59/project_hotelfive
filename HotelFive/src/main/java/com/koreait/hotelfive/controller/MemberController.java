@@ -402,20 +402,6 @@ public class MemberController {
 				return "admin/adminViewPage";
 			}
 			
-			// 관리자 페이지 - 회원추가하기
-			@RequestMapping("adminInsertPage")
-			public String goAdminInsertPage() {
-				return "admin/adminInsertPage";
-			}
-			@RequestMapping(value="adminInsert",method=RequestMethod.POST)
-			public String doAdminInsert(HttpServletRequest request, Model model) {
-				
-				  model.addAttribute("request", request);
-				  command = new AdminInsertCommand();
-				  command.execute(sqlSession, model);
-				  
-				return "redirect:adminList";
-			}
 			
 			// 관리자페이지 - LEAVE(탈퇴시키기)
 			@RequestMapping("adminLeave")

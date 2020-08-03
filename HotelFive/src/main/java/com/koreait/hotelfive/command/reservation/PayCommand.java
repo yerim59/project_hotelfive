@@ -31,24 +31,22 @@ public class PayCommand implements Command {
 
 		HotelFiveDAO hDAO = sqlSession.getMapper(HotelFiveDAO.class);
 		
-		int result = 0;
-		
-		if(mDTO != null) {
-
-			result = hDAO.insertReservation1(gNo, mDTO.getmNo(), rPeople, rPrice, rCheckIn, rCheckOut);
-			
-		}else {
-			String nmId = hDAO.selectNmId(request.getParameter("nmPhone"));
-			result = hDAO.insertReservation2(gNo, nmId, rPeople, rPrice, rCheckIn, rCheckOut);
-			
+		Integer rNo = hDAO.confirmReservation(gNo, rCheckIn, rCheckOut);
+		if (rNo == null ) {
+			int result = 0;
+			if(mDTO != null) {
+				result = hDAO.insertReservation1(gNo, mDTO.getmNo(), rPeople, rPrice, rCheckIn, rCheckOut);
+				
+			}else {
+				String nmId = hDAO.selectNmId(request.getParameter("nmPhone"));
+				result = hDAO.insertReservation2(gNo, nmId, rPeople, rPrice, rCheckIn, rCheckOut);
+			}
 		}
 		
-		if(result != 0) {
 			model.addAttribute("gName", gName);
 			model.addAttribute("rCheckIn", rCheckIn);
 			model.addAttribute("rCheckOut", rCheckOut);
 			model.addAttribute("rPrice", rPrice);
-		}
 
 	}
 	

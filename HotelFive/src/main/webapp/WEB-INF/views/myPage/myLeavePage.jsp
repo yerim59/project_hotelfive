@@ -57,17 +57,22 @@
 		//비밀번호 입력유무 검사
 		$('#leaveBtn').click(function(){
 			if ($('#mPw').val() == '') {
-				swal("비밀번호를 입력하세요","", 'error');
+				//swal("비밀번호를 입력하세요","", 'error');
+				alert('비밀번호를 입력하세요');
 				$('#mPw').focus();
 				return false;
 			}
 			var mPw = '${loginDTO.mPw}';
 			if ( $('#mPw').val() != mPw ) {
-				swal("비밀번호가 일치하지 않습니다.","", 'error');
+				//swal("비밀번호가 일치하지 않습니다.","", 'error');
+				alert('비밀번호가 일치하지 않습니다');
 				return false;
 			}
-			
-			swal({
+			if( confirm('정말 탈퇴하시겠습니까?') ){
+				f.action = 'myLeave';
+				f.submit();
+			}
+			/* swal({
 				  title: "정말 탈퇴하시겠습니까?",
 				  text: "",
 				  icon: "warning",
@@ -86,7 +91,7 @@
 				  } else {
 				    swal("취소하였습니다");
 				  }
-			});
+			}); */
 			
 			
 			

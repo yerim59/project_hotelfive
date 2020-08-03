@@ -188,34 +188,42 @@ function findZipCodeBtn() {
 	 function fn_update(f){
 		// 비밀번호 입력유무 검사 (mPw == mPw2 검사는 ajax에서 처리)
 		if( $('#mPw').val() == '' || $('#mPw').val() == null ){
-			swal("새 비밀번호를 입력하세요","", 'error');
+			//swal("새 비밀번호를 입력하세요","", 'error');
+			alert('새 비밀번호를 입력하세요');
 			$('#mPw').focus();
 			return false;
 		}
 		if( $('#mPw').val() != '' && $('#mPw2').val() == '' ){
-			swal("비밀번호 재확인을 입력하세요","", 'error');
+			//swal("비밀번호 재확인을 입력하세요","", 'error');
+			alert('비밀번호 재확인을 입력하세요');
 			$('#mPw').focus();
 			return false;
 		}
 		// 이름 입력유무 검사
 		if( $('#mName').val() == '' || $('#mName').val() == null){
-			swal("이름을 입력하세요","", 'error');
+			//swal("이름을 입력하세요","", 'error');
+			alert('이름을 입력하세요');
 			$('#mName').focus();
 			return false;
 		}
 		// 이메일 입력유무 검사
 		if( $('#mEmail').val() == '' || $('#mEmail').val() == null){
-			swal("이메일을 입력하세요","", 'error');
+			//swal("이메일을 입력하세요","", 'error');
+			alert('이메일을 입력하세요');
 			$('#mEmail').focus();
 			return false;
 		}
-		var regExpPW = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*])[A-Za-z0-9~!@#$%^&*]{4,20}$/;
-		if( regExpPW != $('#mPw').val() ){
-			swal("잘못된 비밀번호 입니다","", 'error');
-			return false;
+		/* var regExpPW = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~!@#$%^&*])[A-Za-z0-9~!@#$%^&*]{4,20}$/;
+		if( $('#mPw2') != $('#mPw').val() ){
+			//swal("잘못된 비밀번호 입니다","", 'error');
+			alert('잘못된 비밀번호 입니다');
+			
+		} */
+		if( confirm('개인정보를 수정하시겠습니까?') ) {
+			f.action = 'myUpdate';
+			f.submit();
 		}
-		
-		swal({
+		/* swal({
 			  title: "개인정보를 수정하시겠습니까?",
 			  text: "",
 			  icon: "warning",
@@ -234,7 +242,7 @@ function findZipCodeBtn() {
 			  } else {
 			    swal("취소하였습니다");
 			  }
-		});
+		}); */
 	} 
 	
 	

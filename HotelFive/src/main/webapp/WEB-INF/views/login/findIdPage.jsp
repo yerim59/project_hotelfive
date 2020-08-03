@@ -6,7 +6,10 @@
 
 
 <!-- 동적인 페이지 포함 -->
-<jsp:include page="/WEB-INF/views/template/header.jsp" />
+<jsp:include page="/WEB-INF/views/template/header.jsp">
+	<jsp:param value="아이디 찾기" name="title"/>
+</jsp:include>
+	 
 
 <script type="text/javascript">
    
@@ -66,30 +69,39 @@
    });
    
 </script>
-
-<style type="text/css">
-   .find-id-box {
-      border: 2px solid lightgray;
-      margin: 30px auto;
-      width: 500px;
-      padding: 20px 0 30px 70px;
-   }
-   .findId-text {border: none; padding:10px; border-bottom: 2px solid lightgray;width: 350px;}
-   .findId-text:focus {outline: none; border-bottom: 2px solid gray;}
-   #findIdBtn {border: none; width: 100px; padding: 10px 0; margin-top:10px;background: #E3EAF3; border-radius: 20px;}
-   
-</style>
-
 <div class="find-id-box">
-   <form method="POST">
-      <h2 style="color: #CAC2D1;">본인 확인</h2>
-      <input class="findId-text" id="mName" type="text" name="mName" placeholder="이름" autofocus /><br/>
-      <input class="findId-text" id="mEmail" type="text" name="mEmail" placeholder="E-mail" style="width:250px;"/>
-      <input id="findIdBtn" type="button" value="인증번호 받기" /><br/><br/>
-      <input id="authKey" type="text" name="authKey" placeholder='인증번호 입력'/>
 
-      <input id="realFindIdBtn" type="button" value="아이디 찾기" />
-      <div id="findIdResult"></div>  <!-- AJAX 처리 결과가 나타나는 위치이다. -->                  
+   <p id="bold">아이디 찾기</p>
+   <hr id="line"/>
+   <p id="nobold">회원가입 시, 입력하신 회원정보 또는 본인인증으로 아이디를 확인할 수 있습니다.<p>
+   <p id="nobold">인증번호는 가입 시 적어주신 이메일로 보내드립니다.<p>
+   <form method="POST">
+      <br/><p id="tableon">  본인확인용 정보로 찾기</p>  
+      <table>
+         <tr>
+            <td>이 름</td>
+            <td> <input class="findId-text" id="mName" type="text" name="mName" autofocus /></td>
+         </tr>
+         <tr>
+            <td>이메일</td>
+            <td>
+               <input class="findId-text" id="mEmail" type="text" name="mEmail"/>
+               <input id="findIdBtn" type="button" value="인증번호 받기" />
+            </td>
+         </tr>
+         <tr>
+            <td>인증번호 입력</td>
+            <td>
+               <input id="authKey" type="text" name="authKey" />
+               <input id="realFindIdBtn" type="button" value="아이디 찾기" />
+             <div id="findIdResult"></div>  <!-- AJAX 처리 결과가 나타나는 위치이다. -->                  
+            </td>
+         </tr>
+         
+      </table>
+      <div class="btnbox">
+         <input id="findPwBtn"  type="button" value="비밀번호 찾기" onclick="location.href='findPwPage'"/>
+      </div>
       <br/><br/>
    </form>
 </div>

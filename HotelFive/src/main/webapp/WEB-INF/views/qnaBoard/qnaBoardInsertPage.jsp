@@ -6,73 +6,6 @@
    <jsp:param value="QNA게시판" name="title"/>
 </jsp:include>
 <style type="text/css">
-   .qnaBoard-insertBox{
-      width: 1100px; 
-      margin-bottom: 50px; 
-      margin: 50px auto;
-      text-align: center;
-   }
-   .qnaBoard-insertBox table{
-      width: 1100px;
-      margin: 20px auto;
-      border-collapse: collapse;
-   }
-   .qnaBoard-insertBox th, td{
-      border: 1px solid lightgray;
-   }
-   .qnaBoard-insertBox th{
-      background: #EAF2FF;
-      width: 110px;
-   }
-   .title-table tbody tr:nth-of-type(1) input{
-      float: left;
-      padding: 3px;
-      border: 1px solid lightgray;
-   }
-   .title-table tbody tr:nth-of-type(2) input{
-   	  border: 1px solid lightgray;
-      float: left;
-      padding: 3px;
-      width: 795px;
-   }
-
-   .content-table tfoot tr th{
-      border: none;
-   }
-   #pass-caption{
-      font-size: 0.8em;
-      color: crimson;
-   }
-   .limited_text_wrap{
-      width: 985px;
-      height: auto;
-      position: relative;
-      display: inline-block;
-   }
-   .limited_text_wrap textarea{
-      border: 1px solid lightgray; 
-      width: 100%;
-      resize: none;
-      min-height: 19.5em;
-      line-height: 1.6em;
-      max-height: 13em;
-   }
-   .limited_text_wrap textarea:focus, .title-table tbody tr:nth-of-type(1) input:focus, .title-table tbody tr:nth-of-type(2) input:focus {outline: none; border-color: #353535}
-   .limited_text_wrap span{
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-   }
-   #counter{
-      background: #CCCCCC;
-      border-radius: 5px;
-      padding: 0 5px 0 5px;
-      font-size: 1.35em;
-   }
-   .none{
-      border: none;
-      background: white;
-   }
    .notice_backimg {
 		width: 100%; 
 		height: 750px; 
@@ -82,17 +15,6 @@
 		color: white; 
 		padding-top: 300px;
 	}
-	 .content-table input{
-      float: right;
-      background: white;
-      cursor: pointer;
-   }
-	.qnaBoard-insertBox .qnaBtn 
-	{ width: 80px;  float: right;background: white; cursor: pointer; padding: 10px;border: 1px solid lightgray;}
-	.notice_backimg #pagetitle {font-size: 85px;}
-	.notice_backimg #hotelfive, #explain {font-weight: bold;}
-	.notice_backimg #explain {font-size: 15px;}
-  	#writing_name {width: 200px;}
 </style>
 <script type="text/javascript">
    function fn_inputCheck1(f){

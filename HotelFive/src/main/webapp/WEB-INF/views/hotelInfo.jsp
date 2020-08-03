@@ -6,38 +6,16 @@
 
 <!-- 동적인 페이지 포함 -->
 <jsp:include page="/WEB-INF/views/template/header.jsp" />
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9670de9e24cc14ddf9de970d284212ba"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9670de9e24cc14ddf9de970d284212ba&libraries=LIBRARY"></script>
 
 <style type="text/css" >
-	* {
-		font-family: "Inconsolata", sans-serif;
-	}
-	.bgimg { 
-		background-position: center;
-		background-size: cover;
-		background-image: url("resources/assets/aboutUs_img/hotel.jpg");
-		min-height: 750px;
-	}
-	#map{
-		margin: 0 auto;
-	}
-	table {
-		border-collapse: collapse;
-		width: 55%;
-		margin: 0 auto;
-		margin-top: 30px;
-		margin-bottom: 30px;
-	}
-	th, td {
-		padding: 8px;
-		text-align: left;
-		border-bottom: 1px solid #ddd;
-	}
-	tr:hover {background-color:#f5f5f5;}
+	.bgimg {
+	background-position: center;
+	background-size: cover;
+	background-image: url("resources/assets/aboutUs_img/hotel.jpg");
+	min-height: 750px;
+}
 </style>
-
-
 
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
 	<div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
@@ -123,7 +101,7 @@
 	
 </script>
 
-<table>
+<table class="hotelInfoTable">
 	<tr>
 		<th colspan="2">Location of Us</th>
 	</tr>

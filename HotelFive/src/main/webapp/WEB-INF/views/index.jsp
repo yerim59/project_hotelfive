@@ -24,7 +24,7 @@
 	    border: 1px solid black;
 	    padding: 5px;
 	    background:black;
-	    top: 30%;
+	    top: 60%;
 	    left: 25%;
 	    width: 50%;
 	}
@@ -52,16 +52,20 @@
 	#reservation-box-checkIn{
 		width : 100%;
 		border : none;
+		text-align: center;
+    	font-size: 16px;
 	}
    #reservation-box-checkOut{
 	  	width : 100%;
-	   	border : none;
+	  	border : none;
+	   	text-align: center;
+  	    font-size: 16px;
    }
 	#reservation-box-checkIn:focus{
-		border : none;
+		outline : none;
 	}
    #reservation-box-checkOut:focus{
-	   	border : none;
+	   	outline : none;
    }
    #reservation-box-selectBtn{
  		border : none;
@@ -89,6 +93,10 @@
 	  }else if(new Date(f.rCheckIn.value) < today ){
 		  alert('지날 날짜와 당일 예약은 불가능합니다.');
 		  f.rCheckIn.focus();
+		  
+	  }else if(f.rCheckIn.value == f.rCheckOut.value){ 
+		  alert('체크인 날짜와 체크아웃 날짜가 같을 수 없습니다.');
+		  f.rCheckOut.focus();
 	  }else{
 		  f.action="selectBookable";
 		  f.submit();
@@ -124,4 +132,3 @@
 
 </div>
 <!-- 정적인 페이지 포함 -->
-<%@ include file="/WEB-INF/views/template/footer.jsp" %>

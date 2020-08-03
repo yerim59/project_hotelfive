@@ -30,6 +30,8 @@ public interface HotelFiveDAO {
 	
 	public int insertReservation2(int gNo, String nmId, int rPeople, int rPrice, String rCheckIn, String rCheckOut);
 	
+	public Integer confirmReservation(int gNo, String rCheckIn, String rCheckOut);
+	
 	// 비회원 
 	public ArrayList<ReservationDTO> selectNonmemberReservation(String nmName, String nmPhone);
 	
@@ -38,6 +40,9 @@ public interface HotelFiveDAO {
 	public void insertNonMember(String nmName, String nmPhone);
 	
 	public String selectNmId(String nmPhone);
+	
+	
+	
 	//****************************************************************************************************************************************
 	
 	// registor 회원가입
@@ -62,6 +67,8 @@ public interface HotelFiveDAO {
 	public MemberDTO emailCheck(String mEmail);
 	
 	
+	//****************************************************************************************************************************************
+	
 	// 객실정보 리스트
 	// guestRoomList
 	public ArrayList<GuestRoomDTO> guestRoomList();
@@ -73,7 +80,8 @@ public interface HotelFiveDAO {
 	public Double guestRoomRating(String gName);
 	
 	public int guestRoomRatingVote(String gName);
-
+	//****************************************************************************************************************************************
+	
 	// qna 
 	public ArrayList<QNADTO> selectQNABoard(Map<String, Integer> map);
 	
@@ -219,11 +227,15 @@ public interface HotelFiveDAO {
 	
 	// 관리자페이지 -- 전체 예약 현황  - 리스트 조회(예약테이블만 가져온다)
 	public ArrayList<ReservationViewDTO> reservationList(Map<String, Integer> map2);
+	
 	public int getTotalReservationCount();
 	// 관리자페이지 -- 전체 예약 현황 - 리스트 검색하기
 	public ArrayList<ReservationViewDTO> queryAdminReservationList(Map<String, String> map2);
+
 	public int getQueryReservationRecord(Map<String, String> map2);
 
 	public ArrayList<ReservationViewDTO> nonMemberReservationList(Map<String, Integer> map2);
+
+	public void deleteNonMemberReservationNumber(int rNo);
 
 }
